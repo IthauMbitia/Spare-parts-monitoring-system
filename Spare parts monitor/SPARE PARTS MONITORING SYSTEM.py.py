@@ -47,7 +47,7 @@ def add_spare_parts():
     minimum_level = input_int("Minimum level of spares: ")
     location = input_non_empty("Location of spares: ")
 
-    conn = sqlite3.connect('spare_part_monitoring_system db')
+    conn = sqlite3.connect('spare_part_monitoring_system.db')
     c = conn.cursor()
 
     c.execute("""INSERT INTO spare_part_monitoring_system (
@@ -64,7 +64,7 @@ def issue_spare_parts():
     amount = input_int("Enter quantity to issue: ")
 
 
-    conn = sqlite3.connect('spare_part_monitoring_system db')
+    conn = sqlite3.connect('spare_part_monitoring_system.db')
     c = conn.cursor()
 
     c.execute("""
@@ -94,7 +94,7 @@ def issue_spare_parts():
 
 #------------CHECK LOW STOCK---------------
 def check_low_stock():
-    conn = sqlite3.connect('spare_part_monitoring_system db')
+    conn = sqlite3.connect('spare_part_monitoring_system.db')
     c = conn.cursor()
 
     c.execute("""SELECT spare_part_name,quantity,minimum_level FROM spare_part_monitoring_system
@@ -113,7 +113,7 @@ def check_low_stock():
 
 # ------------VIEW ALL SPARE PARTS---------------
 def view_all_spare_parts():
-    conn = sqlite3.connect('spare_part_monitoring_system db')
+    conn = sqlite3.connect('spare_part_monitoring_system.db')
     c = conn.cursor()
 
     c.execute("SELECT * FROM spare_part_monitoring_system")
@@ -162,5 +162,6 @@ def main_menu():
 #------------PROGRAM RUN---------------
 init_db()
 main_menu()
+
 
 
